@@ -1153,7 +1153,7 @@ int CDMRGateway::run()
 
 		for (unsigned int i = 1U; i < 3U; i++) {
 			timer[i]->clock(ms);
-			if ((timer[i]->isRunning() && timer[i]->hasExpired()) || (timer[i]->isRunning && timer[i]->getTimer() < debounceTimout)) {
+			if ((timer[i]->isRunning() && timer[i]->hasExpired()) || (timer[i]->isRunning() && timer[i]->getTimer() <= debounceTimeout)) {
 				m_status[i] = DMRGWS_NONE;
 				timer[i]->stop();
 			}
