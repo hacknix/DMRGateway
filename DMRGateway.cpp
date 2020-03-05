@@ -406,6 +406,7 @@ int CDMRGateway::run()
 
 	unsigned int rfTimeout  = m_conf.getRFTimeout();
 	unsigned int netTimeout = m_conf.getNetTimeout();
+	unsigned int debounceTimeout = m_conf.getDebounceTimeout();
 
 	CVoice* voice = NULL;
 	if (m_conf.getVoiceEnabled() && m_xlxNetwork != NULL) {
@@ -1152,7 +1153,7 @@ int CDMRGateway::run()
 
 		for (unsigned int i = 1U; i < 3U; i++) {
 			timer[i]->clock(ms);
-			if (timer[i]->isRunning() && timer[i]->hasExpired()) {
+			if ((timer[i]->isRunning() && timer[i]->hasExpired()) || (timer[i]->isRunning && timer[i]->getTimer() < debounceTimout)) {
 				m_status[i] = DMRGWS_NONE;
 				timer[i]->stop();
 			}

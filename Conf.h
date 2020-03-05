@@ -70,6 +70,7 @@ public:
 	bool         getDaemon() const;
 	unsigned int getRFTimeout() const;
 	unsigned int getNetTimeout() const;
+	unsigned int getDebounceTimeout() const;
 	std::string  getRptAddress() const;
 	unsigned int getRptPort() const;
 	std::string  getLocalAddress() const;
@@ -221,6 +222,7 @@ private:
 	unsigned int m_localPort;
 	unsigned int m_rfTimeout;
 	unsigned int m_netTimeout;
+	unsigned int m_debounceTimeout;
 	bool         m_ruleTrace;
 	bool         m_debug;
 
